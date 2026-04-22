@@ -131,6 +131,14 @@ purposes, not because they are the optimal fit for the problem:
 
 ---
 
+## Data model
+
+The full database schema, ERD, and table descriptions are documented in
+[`backend/docs/DATAMODEL.md`](backend/docs/DATAMODEL.md). Read this before
+working on any feature — every API and UI decision depends on it.
+
+---
+
 ## CI / container images
 
 GitHub Actions builds and pushes one image per app on merge to main:
