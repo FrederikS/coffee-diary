@@ -128,6 +128,8 @@ purposes, not because they are the optimal fit for the problem:
 - **No k8s manifests here** — Kubernetes manifests live in a separate GitOps
   repository. This repo's only deployment responsibility is publishing container
   images via CI
+- **Maven wrapper** — always use `./mvnw` instead of `mvn` for Maven commands in the
+  backend
 
 ---
 
