@@ -2,5 +2,5 @@
 
 {
   dotenv.enable = true;
-  packages = [ pkgs.openspec ];
+  packages = [ pkgs.openspec pkgs.act ];
 }
