@@ -133,11 +133,34 @@ purposes, not because they are the optimal fit for the problem:
 
 ---
 
+## Testing requirements
+
+Every change MUST include tests for both backend and frontend:
+
+**Backend:**
+- **Integration tests**: Testcontainers with PostgreSQL for API endpoint testing
+- **Architecture tests**: jMolecules ArchUnit tests to enforce DDD conventions
+- **Test data**: Use `backend/src/test/resources/db/testdata.sql` for seeded test data in integration tests
+
+**Frontend:**
+- **Unit/component tests**: Vitest + Vue Test Utils
+- **E2E tests**: Playwright
+
+---
+
 ## Data model
 
 The full database schema, ERD, and table descriptions are documented in
 [`backend/docs/DATAMODEL.md`](backend/docs/DATAMODEL.md). Read this before
 working on any feature — every API and UI decision depends on it.
+
+---
+
+## Design system
+
+The visual design system — color palette, typography, spacing, and component
+guidelines — is documented in [`frontend/docs/DESIGN.md`](frontend/docs/DESIGN.md).
+Read this before implementing any UI feature.
 
 ---
 
