@@ -106,10 +106,6 @@ purposes, not because they are the optimal fit for the problem:
 - **GraphQL** — the domain is simple and a REST API would suffice, but GraphQL is
   used intentionally to gain hands-on experience with schema design, resolvers, and
   query patterns. The agent should apply GraphQL idioms properly, not shortcuts.
-- **Domain-Driven Design (DDD)** — the domain is small and the bounded contexts will
-  feel thin, but DDD package structure and concepts (aggregate roots, repositories,
-  bounded contexts) are applied deliberately as a practice exercise. The agent should
-  respect DDD conventions even when the logic inside a context is minimal.
 
 ---
 
@@ -138,13 +134,11 @@ purposes, not because they are the optimal fit for the problem:
 Every change MUST include tests for both backend and frontend:
 
 **Backend:**
-- **Integration tests**: Testcontainers with PostgreSQL for API endpoint testing
-- **Architecture tests**: jMolecules ArchUnit tests to enforce DDD conventions
-- **Test data**: Use `backend/src/test/resources/db/testdata.sql` for seeded test data in integration tests
+- **Integration tests**: Quarkus Dev Services with PostgreSQL for API endpoint testing
+- **Test data**: Use `backend/src/test/resources/db/init.sql` for seeded test data in integration tests
 
 **Frontend:**
 - **Unit/component tests**: Vitest + Vue Test Utils
-- **E2E tests**: Playwright
 
 ---
 
