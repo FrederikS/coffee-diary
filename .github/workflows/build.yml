@@ -56,4 +56,4 @@ jobs:
 
       - name: Build and run Tests
         working-directory: backend
-        run: devenv shell ./mvnw verify
+        run: devenv shell ./mvnw verify -DskipITs=false
