@@ -119,6 +119,9 @@ purposes, not because they are the optimal fit for the problem:
   `openspec/specs/<feature-name>/` before any code is written. Specs are
   feature-oriented, not layer-oriented — each spec describes the full vertical
   slice (what the API returns and what the UI shows)
+- **Implement only what's specified** — do not add methods, fields, or functionality
+  beyond what the spec explicitly requires. If additional capabilities are needed,
+  update the spec first.
 - **Secrets via environment** — no credentials hardcoded anywhere; local dev uses
   `.env`, production uses Kubernetes Secrets managed in the GitOps repo
 - **No k8s manifests here** — Kubernetes manifests live in a separate GitOps
