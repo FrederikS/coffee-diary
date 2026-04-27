@@ -1,24 +1,23 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { ref } from 'vue'
 import RoasteryDetails from './RoasteryDetails.vue'
 
 vi.mock('vue-router', () => ({
   useRoute: () => ({ params: { id: '1' } }),
 }))
 
-vi.mock('graphql-request', () => ({
-  gql: (strings: TemplateStringsArray) => strings.join(''),
-  GraphQLClient: class {
-    request() {
-      return Promise.resolve({
-        roasteryById: { id: 1, name: 'Test Roastery', website: 'https://test.com' },
-      })
-    }
+vi.mock('../composables/useGraphQL', () => ({
+  useGraphQL: () => {
+    const loading = ref(true)
+    const error = ref(null)
+    const request = vi.fn().mockImplementation(async () => {
+      const result = { roasteryById: { id: 1, name: 'Test Roastery', website: 'https://test.com' } }
+      loading.value = false
+      return result
+    })
+    return { loading, error, request }
   },
-}))
-
-vi.mock('json-bigint', () => ({
-  default: vi.fn(() => ({ parse: vi.fn() })),
 }))
 
 describe('RoasteryDetails', () => {
