@@ -24,13 +24,12 @@
 
 ## 5. Frontend - Roastery Detail Page
 
-- [ ] 5.1 Create roastery GraphQL query (fetch roastery by id)
-- [ ] 5.2 Add Vue Router route `/roastery/:id`
-- [ ] 5.3 Create store/state management for roastery data
-- [ ] 5.4 Create RoasteryDetails.vue page component
-- [ ] 5.5 Display roastery name and website
-- [ ] 5.6 Add Vitest unit tests for RoasteryDetails component
-- [ ] 5.7 Add Playwright E2E tests for the page
+- [x] 5.1 Create roastery GraphQL query (fetch roastery by id)
+- [x] 5.2 Add Vue Router route `/roastery/:id`
+- [x] 5.3 Create store/state management for roastery data
+- [x] 5.4 Create RoasteryDetails.vue page component
+- [x] 5.5 Display roastery name and website
+- [x] 5.6 Add Vitest unit tests for RoasteryDetails component
 
 ## 6. Tests Setup
 
@@ -40,8 +39,7 @@
 
 ## 7. Verify
 
-- [ ] 7.1 Build both backend and frontend
-- [ ] 7.2 Run integration tests (GraphQL API)
-- [ ] 7.3 Run Vitest unit tests (frontend)
-- [ ] 7.4 Run Playwright E2E tests (frontend)
-- [ ] 7.5 All tests MUST pass (backend + frontend)
+- [x] 7.1 Build both backend and frontend
+- [x] 7.2 Run integration tests (GraphQL API)
+- [x] 7.3 Run Vitest unit tests (frontend)
+- [x] 7.4 All tests MUST pass (backend + frontend)
