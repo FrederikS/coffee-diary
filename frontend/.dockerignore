@@ -32,8 +32,14 @@ cypress/videos/
 # -------------------------------
 # Environment and config files
 # -------------------------------
-*.env*
-!.env.production    # Keep production env if needed
+.env
+.env.local
+.env.*.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+# Note: .env.production is intentionally allowed
 *.local
 *.log
 
