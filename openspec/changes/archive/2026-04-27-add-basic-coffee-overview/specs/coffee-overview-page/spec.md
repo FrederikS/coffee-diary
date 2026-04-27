@@ -4,7 +4,7 @@
 
 Displays a table of all coffees in the catalogue. This page replaces the current home view.
 
-## Requirements
+## ADDED Requirements
 ### Requirement: Coffee table replaces home view
 The coffee overview table SHALL be the home page at `/`.
 

@@ -4,7 +4,7 @@
 
 Serves coffee data to the UI and other consumers.
 
-## Requirements
+## ADDED Requirements
 ### Requirement: Coffees query returns all coffees
 The GraphQL API SHALL return a list of all coffees when querying `coffees`.
 
