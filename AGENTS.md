@@ -106,10 +106,6 @@ purposes, not because they are the optimal fit for the problem:
 - **GraphQL** — the domain is simple and a REST API would suffice, but GraphQL is
   used intentionally to gain hands-on experience with schema design, resolvers, and
   query patterns. The agent should apply GraphQL idioms properly, not shortcuts.
-- **Domain-Driven Design (DDD)** — the domain is small and the bounded contexts will
-  feel thin, but DDD package structure and concepts (aggregate roots, repositories,
-  bounded contexts) are applied deliberately as a practice exercise. The agent should
-  respect DDD conventions even when the logic inside a context is minimal.
 
 ---
 
@@ -123,6 +119,9 @@ purposes, not because they are the optimal fit for the problem:
   `openspec/specs/<feature-name>/` before any code is written. Specs are
   feature-oriented, not layer-oriented — each spec describes the full vertical
   slice (what the API returns and what the UI shows)
+- **Implement only what's specified** — do not add methods, fields, or functionality
+  beyond what the spec explicitly requires. If additional capabilities are needed,
+  update the spec first.
 - **Secrets via environment** — no credentials hardcoded anywhere; local dev uses
   `.env`, production uses Kubernetes Secrets managed in the GitOps repo
 - **No k8s manifests here** — Kubernetes manifests live in a separate GitOps
@@ -133,11 +132,32 @@ purposes, not because they are the optimal fit for the problem:
 
 ---
 
+## Testing requirements
+
+Every change MUST include tests for both backend and frontend:
+
+**Backend:**
+- **Integration tests**: Quarkus Dev Services with PostgreSQL for API endpoint testing
+- **Test data**: Use `backend/src/test/resources/db/init.sql` for seeded test data in integration tests
+
+**Frontend:**
+- **Unit/component tests**: Vitest + Vue Test Utils
+
+---
+
 ## Data model
 
 The full database schema, ERD, and table descriptions are documented in
 [`backend/docs/DATAMODEL.md`](backend/docs/DATAMODEL.md). Read this before
 working on any feature — every API and UI decision depends on it.
+
+---
+
+## Design system
+
+The visual design system — color palette, typography, spacing, and component
+guidelines — is documented in [`frontend/docs/DESIGN.md`](frontend/docs/DESIGN.md).
+Read this before implementing any UI feature.
 
 ---
 
