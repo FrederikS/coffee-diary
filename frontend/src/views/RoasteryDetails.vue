@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { GraphQLClient } from 'graphql-request'
-import JSONbig from 'json-bigint'
+import { useGraphQL } from '../composables/useGraphQL'
 import { GET_ROASTERY_BY_ID } from '../queries/getRoasteryById'
 
 interface Roastery {
@@ -13,25 +12,12 @@ interface Roastery {
 
 const route = useRoute()
 const roastery = ref<Roastery | null>(null)
-const error = ref<string | null>(null)
-const loading = ref(true)
-
-const jsonSerializer = JSONbig({ useNativeBigInt: true })
+const { loading, error, request } = useGraphQL()
 
 onMounted(async () => {
   const id = BigInt(route.params.id as string)
-  const client = new GraphQLClient(import.meta.env.VITE_API_URL || 'http://localhost:8080/graphql', {
-    jsonSerializer,
-  })
-
-  try {
-    const data = await client.request<{ roasteryById: Roastery }>(GET_ROASTERY_BY_ID, { id })
-    roastery.value = data.roasteryById
-  } catch (e) {
-    error.value = e instanceof Error ? e.message : 'Failed to load roastery'
-  } finally {
-    loading.value = false
-  }
+  const data = await request<{ roasteryById: Roastery }>(GET_ROASTERY_BY_ID, { id })
+  roastery.value = data.roasteryById
 })
 </script>
 
