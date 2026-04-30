@@ -11,6 +11,34 @@ export const GET_COFFEES = gql`
       price
       link
       createdAt
+      roastery {
+        id
+        name
+      }
+      type {
+        id
+        value
+      }
+      countries {
+        id
+        name
+      }
+      profileTags {
+        id
+        value
+      }
+      images {
+        id
+        sourceUrl
+      }
+      ratings {
+        id
+        rating
+        drinkType {
+          id
+          value
+        }
+      }
     }
   }
 `

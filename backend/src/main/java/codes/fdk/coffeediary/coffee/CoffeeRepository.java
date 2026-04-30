@@ -8,6 +8,11 @@ import java.util.List;
 public class CoffeeRepository implements PanacheRepository<Coffee> {
 
     public List<Coffee> findAllCoffees() {
-        return listAll();
+        return find("SELECT c FROM Coffee c " +
+                "LEFT JOIN FETCH c.roastery " +
+                "LEFT JOIN FETCH c.type " +
+                "LEFT JOIN FETCH c.countries " +
+                "LEFT JOIN FETCH c.profileTags")
+                .list();
     }
 }

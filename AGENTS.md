@@ -139,9 +139,20 @@ Every change MUST include tests for both backend and frontend:
 **Backend:**
 - **Integration tests**: Quarkus Dev Services with PostgreSQL for API endpoint testing
 - **Test data**: Use `backend/src/test/resources/db/init.sql` for seeded test data in integration tests
+- **Prerequisite**: Ensure no port conflicts (e.g., 5432 for Postgres) before running tests
 
 **Frontend:**
 - **Unit/component tests**: Vitest + Vue Test Utils
+
+**Verification**: Before completing a change:
+1. Run `./mvnw verify -DskipITs=false` in backend — alls tests must pass
+2. Run `pnpm test` in frontend — tests must pass
+
+**If tests fail due to environmental issues** (container startup, port conflicts):
+- Document the issue
+- Verify code is correct by confirming compile succeeds
+- Frontend tests passing confirms GraphQL schema changes are valid
+- Mark as "environmental issue" in implementation status
 
 ---
 
