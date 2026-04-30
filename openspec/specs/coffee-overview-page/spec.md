@@ -5,12 +5,8 @@
 Displays a table of all coffees in the catalogue. This page replaces the current home view.
 
 ## Requirements
-### Requirement: Coffee table replaces home view
-The coffee overview table SHALL be the home page at `/`.
 
-#### Scenario: Coffee table is home page
-- **WHEN** user visits `/`
-- **THEN** the coffee table is displayed
+## MODIFIED Requirements
 
 ### Requirement: Coffee table displays all coffees
 The page SHALL display all coffees in a table format.
@@ -20,30 +16,28 @@ The page SHALL display all coffees in a table format.
 - **THEN** a table is displayed with all coffees
 
 ### Requirement: Coffee table shows columns
-The table SHALL display the following columns: Name, Arabica %, Robusta %, Description, Price, Link, Created.
+The table SHALL display the following columns: Name, Roastery, Type, Origins, Profile, Rating, Price, Link, Created.
 
 #### Scenario: Table columns displayed
 - **WHEN** user visits `/`
-- **THEN** table shows columns for name, arabica, robusta, profileDescription, price, link, createdAt
+- **THEN** table shows columns for: name, roastery (nested), type (nested), countries (nested, comma-separated), profileTags (nested, comma-separated), averageRating (computed from ratings), price, link, createdAt
 
-### Requirement: Coffee table shows loading state
-The table SHALL show a loading state while fetching coffee data.
+#### Scenario: Coffee origins displayed as comma-separated list
+- **WHEN** coffee has multiple origin countries
+- **THEN** countries are displayed as comma-separated list in table cell
 
-#### Scenario: Loading state displayed
-- **WHEN** page is loading
-- **THEN** a loading indicator is displayed
+#### Scenario: Coffee profile tags displayed as comma-separated list
+- **WHEN** coffee has multiple profile tags
+- **THEN** profile tags are displayed as comma-separated list in table cell
 
-### Requirement: Coffee table handles empty list
-The table SHALL handle the case when no coffees exist.
+#### Scenario: Average rating computed from ratings
+- **WHEN** coffee has one or more ratings
+- **THEN** the average rating is calculated and displayed in the table
 
-#### Scenario: Empty coffee list
-- **WHEN** no coffees exist in database
-- **THEN** table shows empty state message
+#### Scenario: Coffee type displayed
+- **WHEN** coffee has a type (e.g., espresso, filter, omni-roast)
+- **THEN** the type value is displayed in the table
 
-### Requirement: Unit tests for CoffeeTable component
-The component SHALL have unit tests using Vitest and Vue Test Utils.
-
-#### Scenario: Unit test for table rendering
-- **WHEN** unit tests run
-- **THEN** tests verify the component renders the table correctly
-
+#### Scenario: Roastery name displayed
+- **WHEN** coffee belongs to a roastery
+- **THEN** the roastery name is displayed in the table cell
