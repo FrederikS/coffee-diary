@@ -5,11 +5,11 @@ import org.eclipse.microprofile.graphql.Query;
 import java.util.List;
 
 @GraphQLApi
-public class CoffeeResolver {
+public class CoffeeResource {
 
     private final CoffeeService service;
 
-    public CoffeeResolver(CoffeeService service) {
+    public CoffeeResource(CoffeeService service) {
         this.service = service;
     }
 
