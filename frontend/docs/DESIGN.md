@@ -209,7 +209,7 @@ export default {
 
 ## Component library
 
-UI is built with **shadcn-vue** as the component foundation. shadcn-vue components
-are configured to inherit the design tokens above via Tailwind. When adding a new
-shadcn-vue component, always verify it respects the palette and typography defined
-here — override styles where needed rather than accepting shadcn defaults.
+UI is built with **PrimeVue** as the component foundation. PrimeVue components
+are configured to use our design tokens via Tailwind passthrough. When adding a new
+PrimeVue component, always verify it respects the palette and typography defined
+here — override styles where needed rather than accepting PrimeVue defaults.
