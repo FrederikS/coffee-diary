@@ -30,17 +30,6 @@ The coffee list on the overview page SHALL be displayed using a PrimeVue DataTab
 - **WHEN** coffee data is fetched from GraphQL
 - **THEN** the data is passed to the DataTable's v-model or data binding
 
-### Requirement: DataTable columns are configurable
-The DataTable SHALL support column visibility toggles so users can show/hide columns.
-
-#### Scenario: Column toggle menu is available
-- **WHEN** user clicks the column toggle button
-- **THEN** a menu shows all available columns with checkboxes to enable/disable each
-
-#### Scenario: Column visibility persists
-- **WHEN** user toggles a column visibility
-- **THEN** the column shows/hides in the table immediately
-
 ### Requirement: DataTable supports sorting
 The DataTable SHALL allow users to sort by clicking on column headers.
 
@@ -93,16 +82,16 @@ PrimeVue components SHALL use the design tokens from `frontend/docs/DESIGN.md`.
 - **WHEN** DataTable displays text content
 - **THEN** primary text uses `--color-espresso`, secondary text uses `--color-latte`
 
-### Requirement: Rating is displayed using Badge component
-The coffee rating SHALL be displayed using a PrimeVue Badge component.
+### Requirement: Rating is displayed using stars
+The coffee rating SHALL be displayed using a PrimeVue Rating component (stars).
 
-#### Scenario: Rating shows as badge
+#### Scenario: Rating shows as stars
 - **WHEN** a coffee has a rating value
-- **THEN** the rating is displayed using a Badge component styled with amber accent
+- **THEN** the rating is displayed as filled/empty stars with amber accent color
 
-#### Scenario: Rating badge shows numeric value
+#### Scenario: Rating shows numeric value
 - **WHEN** a coffee has a rating
-- **THEN** the Badge displays the numeric rating value (e.g., "7")
+- **THEN** the numeric rating value is displayed next to the stars (e.g., "4.0")
 
 ### Requirement: Responsive design works on mobile and desktop
 The DataTable SHALL adapt to different screen sizes.
