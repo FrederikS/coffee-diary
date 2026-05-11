@@ -196,6 +196,7 @@ export default {
 - Use amber exclusively as the accent color
 - Keep borders at 0.5px
 - Use eyebrow labels to orient the user within a card
+- Use Tailwind utility classes for all component styling
 
 **Don't:**
 - Introduce new colors not in the palette
@@ -204,6 +205,7 @@ export default {
 - Use colored backgrounds on cards (cards are always white)
 - Use amber for anything other than ratings and active/highlight states
 - Use rounded corners on single-sided borders
+- Add custom `<style scoped>` blocks to components — use Tailwind classes instead
 
 ---
 
