@@ -7,6 +7,8 @@ ARG NGINX_VERSION=1.30-alpine3.23
 # Use a lightweight DHI Node.js image for building
 FROM node:${NODE_VERSION} AS builder
 
+ARG VERSION="dev"
+
 # Set up pnpm
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
