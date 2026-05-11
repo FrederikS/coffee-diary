@@ -2,7 +2,7 @@
 import { ref, onMounted } from "vue";
 import { useGraphQL } from "../composables/useGraphQL";
 import { GET_COFFEES } from "../queries/getCoffees";
-import Button from 'primevue/button';
+import Button from "primevue/button";
 import Card from "primevue/card";
 import ProgressSpinner from "primevue/progressspinner";
 import DataTable from "primevue/datatable";
@@ -100,66 +100,75 @@ function getAverageRating(ratings: RatingType[]): number {
 </script>
 
 <template>
-  <div class="max-w-[1300px] mx-auto px-4 sm:px-8 py-8">
-    <Card>
-      <template #title><h2 class="text-center text-3xl">Coffees</h2></template>
-      <template #content>
-        <div v-if="loading" class="flex justify-center items-center py-8">
-          <ProgressSpinner />
-        </div>
+  <Card>
+    <template #title><h2 class="text-center text-3xl">Coffees</h2></template>
+    <template #content>
+      <div v-if="loading" class="flex justify-center items-center py-8">
+        <ProgressSpinner />
+      </div>
 
-        <p v-else-if="error">
-          {{ error }}
-        </p>
-        <template v-else-if="coffees.length === 0">
-          <p>No coffees found</p>
-        </template>
-        <DataTable v-else :value="coffees" sortable filterDisplay="menu" paginator :rows="10">
-          <Column field="name" header="Name" sortable filter showSortMenu />
-          <Column
-            field="roastery.name"
-            header="Roastery"
-            sortable
-            filter
-            showSortMenu
-            showFilterMenu
-          />
-          <Column field="type.value" header="Type" sortable filter showSortMenu showFilterMenu />
-          <Column field="countries" header="Origins" filter showSortMenu showFilterMenu>
-            <template #body="{ data }">
-              {{ formatCountries(data.countries) }}
-            </template>
-          </Column>
-          <Column field="profileTags" header="Profile" filter showSortMenu showFilterMenu>
-            <template #body="{ data }">
-              <Chip v-for="tag in data.profileTags" :key="tag.id" :label="tag.value" class="py-1 m-1" />
-            </template>
-          </Column>
-          <Column field="averageRating" header="Rating" sortable showSortMenu>
-            <template #body="{ data }">
-              <div v-if="getAverageRating(data.ratings) > 0" class="flex items-center gap-2">
-                <Rating
-                  :modelValue="getAverageRating(data.ratings)"
-                  :readonly="true"
-                  :cancel="false"
-                />
-                <span>{{ getAverageRating(data.ratings).toFixed(1) }}</span>
-              </div>
-              <span v-else>-</span>
-            </template>
-          </Column>
-          <Column field="price" header="Price" sortable showSortMenu>
-            <template #body="{ data }">
-              {{ formatPrice(data.price) }}
-            </template>
-          </Column>
-          <Column field="link" header="Link" toggleable>
-            <template #body="{ data }">
-              <Button as="a" label="Visit" :href="data.link" target="_blank" rel="noopener noreferrer" />
-            </template>
-          </Column>
-        </DataTable>
+      <p v-else-if="error">
+        {{ error }}
+      </p>
+      <template v-else-if="coffees.length === 0">
+        <p>No coffees found</p>
       </template>
-    </Card>
-  </div>
+      <DataTable v-else :value="coffees" sortable filterDisplay="menu" paginator :rows="10">
+        <Column field="name" header="Name" sortable filter showSortMenu />
+        <Column
+          field="roastery.name"
+          header="Roastery"
+          sortable
+          filter
+          showSortMenu
+          showFilterMenu
+        />
+        <Column field="type.value" header="Type" sortable filter showSortMenu showFilterMenu />
+        <Column field="countries" header="Origins" filter showSortMenu showFilterMenu>
+          <template #body="{ data }">
+            {{ formatCountries(data.countries) }}
+          </template>
+        </Column>
+        <Column field="profileTags" header="Profile" filter showSortMenu showFilterMenu>
+          <template #body="{ data }">
+            <Chip
+              v-for="tag in data.profileTags"
+              :key="tag.id"
+              :label="tag.value"
+              class="py-1 m-1"
+            />
+          </template>
+        </Column>
+        <Column field="averageRating" header="Rating" sortable showSortMenu>
+          <template #body="{ data }">
+            <div v-if="getAverageRating(data.ratings) > 0" class="flex items-center gap-2">
+              <Rating
+                :modelValue="getAverageRating(data.ratings)"
+                :readonly="true"
+                :cancel="false"
+              />
+              <span>{{ getAverageRating(data.ratings).toFixed(1) }}</span>
+            </div>
+            <span v-else>-</span>
+          </template>
+        </Column>
+        <Column field="price" header="Price" sortable showSortMenu>
+          <template #body="{ data }">
+            {{ formatPrice(data.price) }}
+          </template>
+        </Column>
+        <Column field="link" header="Link" toggleable>
+          <template #body="{ data }">
+            <Button
+              as="a"
+              label="Visit"
+              :href="data.link"
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+          </template>
+        </Column>
+      </DataTable>
+    </template>
+  </Card>
 </template>

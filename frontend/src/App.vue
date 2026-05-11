@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
+import AppFooter from './components/AppFooter.vue'
 </script>
 
 <template>
-  <RouterView />
+  <div class="max-w-[1300px] mx-auto px-4 sm:px-8 py-8">
+    <RouterView />
+    <AppFooter />
+  </div>
 </template>
 
 <style scoped>

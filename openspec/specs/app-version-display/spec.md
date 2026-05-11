@@ -24,9 +24,9 @@ The application footer SHALL display the version when it is provided during the 
 - **WHEN** VITE_APP_VERSION is defined
 - **THEN** the footer SHALL display the version without "v" prefix (e.g., "1.2.3")
 
-#### Scenario: Version not displayed in dev builds
+#### Scenario: Version defaults to 'dev' in dev builds
 - **WHEN** VITE_APP_VERSION is undefined (non-release build)
-- **THEN** the footer SHALL NOT display any version text
+- **THEN** the footer SHALL display "dev"
 
 ### Requirement: Version is displayed without v prefix
 
